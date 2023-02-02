@@ -104,3 +104,13 @@ function onFormSubmit(event) {
 /*
 * События инпутов input (полей ввода)
 */
+
+/*
+* Паттерн "Обьект ссылок"
+*
+* События
+* - focus и blur
+* - input и change
+* - Чекбоксы и свойство checked
+*/
+
