@@ -43,8 +43,8 @@ addListenerBtn.addEventListener("click", () => {
 removeListenerBtn.addEventListener("click", () => {
   console.log("Снимаю слушателя события с целевой кнопки");
 
-    targetBtn.removeEventListener("click", onTargetButtonClick);
-    // тут в скобках указываем от чего нужно отписаться от события клика и сняли функцию чтобы она не реагировала
+  targetBtn.removeEventListener("click", onTargetButtonClick);
+  // тут в скобках указываем от чего нужно отписаться от события клика и сняли функцию чтобы она не реагировала
 });
 
 function onTargetButtonClick() {
@@ -65,12 +65,38 @@ function onTargetButtonClick() {
 // }
 
 /*
-* Виды событий. какие они бывают
-*/
+ * Виды событий. какие они бывают
+ */
 
 /*
-* Событие submit
-* - Действие браузера по умолчанию
-* - Свойство elements
-* - Класс FornData - https://developer.mozilla.org/en-US/docs/Web/API/FormData
-*/
+ * Событие submit
+ * - Действие браузера по умолчанию
+ * - Свойство elements
+ * - Класс FornData - https://developer.mozilla.org/en-US/docs/Web/API/FormData
+ */
+
+// Сделали ссылку на форму тут блок выборки элементов
+const form = document.querySelector('.js-register-form');
+
+// Блок подписок
+form.addEventListener('submit', onFormSubmit);
+
+// Блок всех обработчиков этих подписок
+function onFormSubmit(event) {
+  event.preventDefault();
+  // .preventDafault() - это метод предотвратить по умолчанию
+    const formData = new FormData(event.currentTarget)
+    // мы создали новый экземпляр и при вызове мы в скобках мы передаем ссылку на форму на DOM-узел на саму эту форму целиком
+    // FormData - под капотом собирает все значения всех полей которые есть в форме
+
+    console.log(formData);
+    // Посмотреть на данные можно через forEach
+    formData.forEach((value, name) => {
+        console.log('onFormSubmit -> name', name)
+        console.log('onFormSubmit -> value', value)
+    })
+}
+// Вот так делаеться отправка формы
+// Если нужно собрать данные всей формы то у вас есть один помошник FormData
+
+// Когда у нас отправляеться форма то браузер перезагружаеться это поведение по умолчанию в браузере но нам нужнр предотвратить
