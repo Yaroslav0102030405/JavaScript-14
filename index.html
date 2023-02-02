@@ -15,6 +15,39 @@
     <button type="button" class="js-remove-listener">Снять слушатель</button>
     <!-- Колоприкер -->
     <div class="color-picker js-color-picker"></div>
+
+    <!-- Событие сабмита формы -->
+    <form class="js-register-form" autocomplete="off">
+    <div role="group">
+      <label>Пошта
+        <input type="email" name="email">
+      </label>
+      <label>Пароль
+        <input type="password" name="password">
+      </label>
+    </div>
+
+    <br />
+    <div role="group">
+      <b>Тип подписки:</b>
+      <label>
+<input type="radio" name="subscription" value="free">
+       Free
+      </label>
+      <label>
+        <input type="radio" name="subscription" value="basic">
+        Basic
+      </label>
+      <label>
+        <input type="radio" name="subscription" value="pro">
+        Pro
+      </label>
+    </div>
+
+    <br />
+    <button type="submit">Зарегестрироваться</button>
+</form>
+
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
     <!-- <script src="./JS/script-1.js" type="module"></script> -->
     <!-- <script src="./JS/script-2.js" type="module"></script> -->

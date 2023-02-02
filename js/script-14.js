@@ -67,3 +67,10 @@ function onTargetButtonClick() {
 /*
 * Виды событий. какие они бывают
 */
+
+/*
+* Событие submit
+* - Действие браузера по умолчанию
+* - Свойство elements
+* - Класс FornData - https://developer.mozilla.org/en-US/docs/Web/API/FormData
+*/
