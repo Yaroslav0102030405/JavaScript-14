@@ -9,7 +9,7 @@
   </head>
   <body>
     <p><a href="/index.html">На главную</a></p>
-    
+
     <button type="button" class="js-target-btn">Целевая кнопка</button>
     <button type="button" class="js-add-listener">Добавить слушатель</button>
     <button type="button" class="js-remove-listener">Снять слушатель</button>
@@ -17,7 +17,7 @@
     <div class="color-picker js-color-picker"></div>
 
     <!-- Событие сабмита формы -->
-    <form class="js-register-form" autocomplete="off">
+    <!-- <form class="js-register-form" autocomplete="off">
     <div role="group">
       <label>Пошта
         <input type="email" name="email">
@@ -46,7 +46,37 @@
 
     <br />
     <button type="submit">Зарегистрироваться</button>
-</form>
+</form> -->
+
+    <label
+      >Имя
+      <input type="text" class="js-input" />
+    </label>
+    <p></p>
+    <label>
+      <input type="checkbox" class="js-license" />
+      Принимаю лицензинное соглашение
+    </label>
+
+    <br />
+    <div role="group">
+      <b>Тип подписки:</b>
+      <label>
+        <input type="radio" name="subscription" value="free" />
+        Free
+      </label>
+      <label>
+        <input type="radio" name="subscription" value="basic" />
+        Basic
+      </label>
+      <label>
+        <input type="radio" name="subscription" value="pro" />
+        Pro
+      </label>
+    </div>
+
+    <br />
+    <button type="submit">Зарегистрироваться</button>
 
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
     <!-- <script src="./JS/script-1.js" type="module"></script> -->
