@@ -52,31 +52,16 @@
       >Имя
       <input type="text" class="js-input" />
     </label>
-    <p></p>
+    <p>
     <label>
       <input type="checkbox" class="js-license" />
       Принимаю лицензинное соглашение
     </label>
+</p>
 
-    <br />
-    <div role="group">
-      <b>Тип подписки:</b>
-      <label>
-        <input type="radio" name="subscription" value="free" />
-        Free
-      </label>
-      <label>
-        <input type="radio" name="subscription" value="basic" />
-        Basic
-      </label>
-      <label>
-        <input type="radio" name="subscription" value="pro" />
-        Pro
-      </label>
-    </div>
-
-    <br />
-    <button type="submit">Зарегистрироваться</button>
+    <button type="submit" disabled class="js-button">
+      Зарегистрироваться как <span>Аноним</span>
+    </button>
 
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
     <!-- <script src="./JS/script-1.js" type="module"></script> -->
