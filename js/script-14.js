@@ -76,41 +76,72 @@ function onTargetButtonClick() {
  */
 
 // Сделали ссылку на форму тут блок выборки элементов
-const form = document.querySelector('.js-register-form');
+// const form = document.querySelector('.js-register-form');
 
-// Блок подписок
-form.addEventListener('submit', onFormSubmit);
+// // Блок подписок
+// form.addEventListener('submit', onFormSubmit);
 
-// Блок всех обработчиков этих подписок
-function onFormSubmit(event) {
-  event.preventDefault();
-  // .preventDafault() - это метод предотвратить по умолчанию
-    const formData = new FormData(event.currentTarget)
-    // мы создали новый экземпляр и при вызове мы в скобках мы передаем ссылку на форму на DOM-узел на саму эту форму целиком
-    // FormData - под капотом собирает все значения всех полей которые есть в форме
+// // Блок всех обработчиков этих подписок
+// function onFormSubmit(event) {
+//   event.preventDefault();
+//   // .preventDafault() - это метод предотвратить по умолчанию
+//     const formData = new FormData(event.currentTarget)
+//     // мы создали новый экземпляр и при вызове мы в скобках мы передаем ссылку на форму на DOM-узел на саму эту форму целиком
+//     // FormData - под капотом собирает все значения всех полей которые есть в форме
 
-    console.log(formData);
-    // Посмотреть на данные можно через forEach
-    formData.forEach((value, name) => {
-        console.log('onFormSubmit -> name', name)
-        console.log('onFormSubmit -> value', value)
-    })
-}
+//     console.log(formData);
+//     // Посмотреть на данные можно через forEach
+//     formData.forEach((value, name) => {
+//         console.log('onFormSubmit -> name', name)
+//         console.log('onFormSubmit -> value', value)
+//     })
+// }
 // Вот так делаеться отправка формы
 // Если нужно собрать данные всей формы то у вас есть один помошник FormData
 
 // Когда у нас отправляеться форма то браузер перезагружаеться это поведение по умолчанию в браузере но нам нужнр предотвратить
 
 /*
-* События инпутов input (полей ввода)
-*/
+ * События инпутов input (полей ввода)
+ */
 
 /*
-* Паттерн "Обьект ссылок"
-*
-* События
-* - focus и blur
-* - input и change
-* - Чекбоксы и свойство checked
-*/
+ * Паттерн "Обьект ссылок"
+ *
+ * События
+ * - focus и blur
+ * - input и change
+ * - Чекбоксы и свойство checked
+ */
 
+const refs = {
+  input: document.querySelector(".js-input"),
+  nameLabel: document.querySelector(".js-button > span"),
+  license: document.querySelector(".js-license"),
+  btn: document.querySelector(".js-button"),
+};
+
+// const input = document.querySelector("js-input")
+// const nameLabel = document.querySelector("js-button > span")
+//   const license = document.querySelector("js-license")
+//  const btn = document.querySelector("js-button")
+
+// refs.input.addEventListener('focus', onInputFocus);
+// refs.input.addEventListener('blur', onInputBlur);
+
+// Это используеться чтобы получить значение input
+refs.input.addEventListener("input", onInputChange);
+
+function onInputFocus() {
+  console.log("Инпут получит фокус - событие focus");
+}
+
+function onInputBlur() {
+  console.log("Инпут потерял фокус - событие blur");
+}
+
+function onInputChange(event) {
+  console.log(event.currentTarget.value);
+}
+
+// function onLicenseChange()
