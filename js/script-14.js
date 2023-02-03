@@ -117,7 +117,7 @@ function onTargetButtonClick() {
 const refs = {
   input: document.querySelector(".js-input"),
   nameLabel: document.querySelector(".js-button > span"),
-  license: document.querySelector(".js-license"),
+  licenseCheckbox: document.querySelector(".js-license"),
   btn: document.querySelector(".js-button"),
 };
 
@@ -131,6 +131,7 @@ const refs = {
 
 // Это используеться чтобы получить значение input
 refs.input.addEventListener("input", onInputChange);
+refs.licenseCheckbox.addEventListener('change', onLicenseChange)
 
 function onInputFocus() {
   console.log("Инпут получит фокус - событие focus");
@@ -141,7 +142,19 @@ function onInputBlur() {
 }
 
 function onInputChange(event) {
-  console.log(event.currentTarget.value);
+  // console.log(event.currentTarget.value);
+  refs.nameLabel.textContent = event.currentTarget.value
 }
 
-// function onLicenseChange()
+function onLicenseChange(event) {
+  console.log(event.currentTarget.checked);
+  // Свойство checked хранит в себе буль true или false выбран он или нет это есть на инпутах чекбоксах и радио баттон
+  refs.btn.disabled = !event.currentTarget.checked;
+  // включили кнопку свойством disabled (тут кнопка выключена когда элемент не выбран)
+}
+
+// Событие change используеться для чекбоксов и радио кнопок а для полей используеться инпут
+
+/*
+* Событие клавиатуры
+*/
