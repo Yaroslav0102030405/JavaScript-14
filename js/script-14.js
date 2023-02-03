@@ -165,30 +165,30 @@ function onTargetButtonClick() {
  * - Свойства KeyboardEvent.key и KeyboardEvent.code
  */
 
-const refs = {
-  output: document.querySelector(".js-output"),
-  // ссылка на абзац
-  clearBtn: document.querySelector(".js-clear"),
-  // ссылка на кнопку
-};
+// const refs = {
+//   output: document.querySelector(".js-output"),
+//   // ссылка на абзац
+//   clearBtn: document.querySelector(".js-clear"),
+//   // ссылка на кнопку
+// };
 
-// Мы будем вешать событие прослушивание клавиатуры на окно window
-window.addEventListener("keypress", onKeypress);
-refs.clearBtn.addEventListener("click", onClearOutput);
+// // Мы будем вешать событие прослушивание клавиатуры на окно window
+// window.addEventListener("keypress", onKeypress);
+// refs.clearBtn.addEventListener("click", onClearOutput);
 
-function onKeypress(event) {
-  // Хранит символ который был введен с этой клавиши
-  console.log(event.key);
-  // хранит физическую клавишу номер ее и место положение на клавиатуре
-  console.log(event.code);
+// function onKeypress(event) {
+//   // Хранит символ который был введен с этой клавиши
+//   console.log(event.key);
+//   // хранит физическую клавишу номер ее и место положение на клавиатуре
+//   console.log(event.code);
 
-  refs.output.textContent += event.key;
-}
+//   refs.output.textContent += event.key;
+// }
 
-function onClearOutput() {
-  refs.output.textContent = "";
-  // очистить
-}
+// function onClearOutput() {
+//   refs.output.textContent = "";
+//   // очистить
+// }
 
 /*
 * Событие мыши
@@ -201,3 +201,53 @@ function onClearOutput() {
 
 // Смотреть видео
 
+/*
+* Мы делаем модальное окно
+* - Открыть и закрыть по кнопке: onModalOpen и onModalClose
+* - Закрыть по клику в бекдроп: onBackDropClick
+* - Закрыть по ESC: onEscapeKeypress
+*
+* - В CSS есть класс show-modal, который необходимо добавить на body при открытии модалки
+*/
+
+const refs = {
+  openModalBtn: document.querySelector('[data-action="open-modal"]'),
+  // квадратные скобки - это целектор атрибута
+  closeModalBtn: document.querySelector('[data-action="close-modal"]'),
+  backdrop: document.querySelector('.js-backdrop'),
+};
+
+// вешаем слущателя
+refs.openModalBtn.addEventListener('click', onOpenModal)
+// снимаешь действие кнопки
+refs.closeModalBtn.addEventListener('click', onCloseModal)
+// при нажатии на серый цвет закрылась модалка
+refs.backdrop.addEventListener('click', onBackdropClick)
+
+function onOpenModal() {
+  // получаем ссылку на body
+  document.body.classList.add('show-modal')
+}
+
+// делаем чтобы закрыть (то есть снимае класс с боди)
+function onCloseModal() {
+  document.body.classList.remove('show-modal')
+}
+
+// Вся модалка это hrml + css а с помощью JS кликом по кнопке мы добавляем стили или снимаем
+// JS - это работа с данными и добавление css классов и удаление и создание элементов
+
+// теперь сделаем когда модалка открыта и мы нажимаешь на серый фон чтобы модалка закрылась
+// у нас есть ссылка на это серый цвет backdrop
+function onBackdropClick() {
+  console.log(event.currentTarget)
+  // где висит это событие
+  console.log(event.target)
+  // где произошло это событие
+
+  if (event.currentTarget === event.target) {
+    onCloseModal()
+    // тут мы вызываем закрытие модалки по условию
+  }
+
+}
