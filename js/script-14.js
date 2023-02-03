@@ -190,3 +190,14 @@ function onClearOutput() {
   // очистить
 }
 
+/*
+* Событие мыши
+* - mouseenter и mouseleave (это ховер) но через JS
+* - mouseover и mouseout
+* - mousemove (chatty event - болтливое событие)
+* - Довмат по координатам: https://nerdparadise.com/programming/javascriptmouseposition
+* - Хорошая задачка - https://learn.javascript.ru/tasc/move-ball-field
+*/
+
+// Смотреть видео
+
