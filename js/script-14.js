@@ -33,19 +33,19 @@ const removeListenerBtn = document.querySelector(".js-remove-listener");
 // В скобкам первым аргументом вы передаете тип события который вы хотите реагировать прослушивать
 // На копку вы вешаете наверное только слик какой-то Событие передается ввиде строки
 // Вторым аргументом вы пердаете колбек функцию которая будет выполнена в момент наступления этого события
-addListenerBtn.addEventListener("click", () => {
-  // Если не нужно отписываться то вы просто кидаете анонимную функцию
-  console.log("Вешаю слушателя события на целевую кнопку");
+// addListenerBtn.addEventListener("click", () => {
+//   // Если не нужно отписываться то вы просто кидаете анонимную функцию
+//   console.log("Вешаю слушателя события на целевую кнопку");
 
-  targetBtn.addEventListener("click", onTargetButtonClick);
-});
+//   targetBtn.addEventListener("click", onTargetButtonClick);
+// });
 
-removeListenerBtn.addEventListener("click", () => {
-  console.log("Снимаю слушателя события с целевой кнопки");
+// removeListenerBtn.addEventListener("click", () => {
+//   console.log("Снимаю слушателя события с целевой кнопки");
 
-  targetBtn.removeEventListener("click", onTargetButtonClick);
-  // тут в скобках указываем от чего нужно отписаться от события клика и сняли функцию чтобы она не реагировала
-});
+//   targetBtn.removeEventListener("click", onTargetButtonClick);
+//   // тут в скобках указываем от чего нужно отписаться от события клика и сняли функцию чтобы она не реагировала
+// });
 
 function onTargetButtonClick() {
   console.log("Клик по целевой кнопке");
@@ -114,12 +114,12 @@ function onTargetButtonClick() {
  * - Чекбоксы и свойство checked
  */
 
-const refs = {
-  input: document.querySelector(".js-input"),
-  nameLabel: document.querySelector(".js-button > span"),
-  licenseCheckbox: document.querySelector(".js-license"),
-  btn: document.querySelector(".js-button"),
-};
+// const refs = {
+//   input: document.querySelector(".js-input"),
+//   nameLabel: document.querySelector(".js-button > span"),
+//   licenseCheckbox: document.querySelector(".js-license"),
+//   btn: document.querySelector(".js-button"),
+// };
 
 // const input = document.querySelector("js-input")
 // const nameLabel = document.querySelector("js-button > span")
@@ -130,31 +130,63 @@ const refs = {
 // refs.input.addEventListener('blur', onInputBlur);
 
 // Это используеться чтобы получить значение input
-refs.input.addEventListener("input", onInputChange);
-refs.licenseCheckbox.addEventListener('change', onLicenseChange)
+// refs.input.addEventListener("input", onInputChange);
+// refs.licenseCheckbox.addEventListener('change', onLicenseChange)
 
-function onInputFocus() {
-  console.log("Инпут получит фокус - событие focus");
-}
+// function onInputFocus() {
+//   console.log("Инпут получит фокус - событие focus");
+// }
 
-function onInputBlur() {
-  console.log("Инпут потерял фокус - событие blur");
-}
+// function onInputBlur() {
+//   console.log("Инпут потерял фокус - событие blur");
+// }
 
-function onInputChange(event) {
-  // console.log(event.currentTarget.value);
-  refs.nameLabel.textContent = event.currentTarget.value
-}
+// function onInputChange(event) {
+//   // console.log(event.currentTarget.value);
+//   refs.nameLabel.textContent = event.currentTarget.value
+// }
 
-function onLicenseChange(event) {
-  console.log(event.currentTarget.checked);
-  // Свойство checked хранит в себе буль true или false выбран он или нет это есть на инпутах чекбоксах и радио баттон
-  refs.btn.disabled = !event.currentTarget.checked;
-  // включили кнопку свойством disabled (тут кнопка выключена когда элемент не выбран)
-}
+// function onLicenseChange(event) {
+//   console.log(event.currentTarget.checked);
+//   // Свойство checked хранит в себе буль true или false выбран он или нет это есть на инпутах чекбоксах и радио баттон
+//   refs.btn.disabled = !event.currentTarget.checked;
+// включили кнопку свойством disabled (тут кнопка выключена когда элемент не выбран)
+// }
 
 // Событие change используеться для чекбоксов и радио кнопок а для полей используеться инпут
 
 /*
-* Событие клавиатуры
-*/
+ * Событие клавиатуры
+ */
+
+/*
+ * Типы событий: keypress, keydown, keyup
+ * - Ограничения keypress
+ * - Свойства KeyboardEvent.key и KeyboardEvent.code
+ */
+
+const refs = {
+  output: document.querySelector(".js-output"),
+  // ссылка на абзац
+  clearBtn: document.querySelector(".js-clear"),
+  // ссылка на кнопку
+};
+
+// Мы будем вешать событие прослушивание клавиатуры на окно window
+window.addEventListener("keypress", onKeypress);
+refs.clearBtn.addEventListener("click", onClearOutput);
+
+function onKeypress(event) {
+  // Хранит символ который был введен с этой клавиши
+  console.log(event.key);
+  // хранит физическую клавишу номер ее и место положение на клавиатуре
+  console.log(event.code);
+
+  refs.output.textContent += event.key;
+}
+
+function onClearOutput() {
+  refs.output.textContent = "";
+  // очистить
+}
+
