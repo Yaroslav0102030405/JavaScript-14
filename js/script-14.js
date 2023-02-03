@@ -224,14 +224,23 @@ refs.closeModalBtn.addEventListener('click', onCloseModal)
 // при нажатии на серый цвет закрылась модалка
 refs.backdrop.addEventListener('click', onBackdropClick)
 
+// давайте слушателя событий на window повесим только тогда когда мы модалку открываем а когда закрыли модалку снимем
+
+
+
 function onOpenModal() {
   // получаем ссылку на body
   document.body.classList.add('show-modal')
+  // добавляем слушателя событий на виндов только при открытии модалки
+  window.addEventListener('keydown', onEscKeyPress)
+  // мы сделали на виндов потому что мы хотим прослушивать нажатие клавиатуры
 }
 
 // делаем чтобы закрыть (то есть снимае класс с боди)
 function onCloseModal() {
   document.body.classList.remove('show-modal')
+  // убираем слушателя событий виндов при закрытии модалки
+  window.removeEventListener('keydown', onEscKeyPress)
 }
 
 // Вся модалка это hrml + css а с помощью JS кликом по кнопке мы добавляем стили или снимаем
@@ -239,15 +248,19 @@ function onCloseModal() {
 
 // теперь сделаем когда модалка открыта и мы нажимаешь на серый фон чтобы модалка закрылась
 // у нас есть ссылка на это серый цвет backdrop
-function onBackdropClick() {
-  console.log(event.currentTarget)
-  // где висит это событие
-  console.log(event.target)
+function onBackdropClick(event) {
+  // console.log(event.currentTarget)
+  // // где висит это событие
+  // console.log(event.target)
   // где произошло это событие
 
   if (event.currentTarget === event.target) {
     onCloseModal()
     // тут мы вызываем закрытие модалки по условию
   }
+}
 
+function onEscKeyPress(event) {
+  console.log(event)
+  onCloseModal()
 }
